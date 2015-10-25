@@ -13,7 +13,7 @@ if(isset($_POST['US_Email']) && isset($_POST['US_Password'])){
 
     if($User != null){
         if(isset($_POST['Task']) && $_POST['Task']== "Send_Disciple"){
-            $ff = $MyDB->add_new_user('sur_name',$_POST['First_Name'],'Middle_Name','Display_Name',$_POST['Email'],$_POST['Phone'],'country','pass',$Mentor_ID,'Pic')['status'];
+            $ff = $MyDB->add_new_user($_POST['Full_Name'],$_POST['Password'],$_POST['Email'],$_POST['Phone'],$_POST['Pic'],$Mentor_ID)['status'];
             if($ff == 1) {
                 $ben['Task'] = '1';
             }
@@ -23,11 +23,11 @@ if(isset($_POST['US_Email']) && isset($_POST['US_Password'])){
             if(isset($Disciples) && isset($Disciples['result'])){
                 foreach($Disciples['result'] as $Disciple){
                     $found = array();
-                    $found['First_Name'] = $Disciple['firstName'];
-                    $found['Middle_Name'] = $Disciple['email'];
-                    $found['Phone'] = $Disciple['phone_no'];
-                    $found['Email'] = $Disciple['phone_no'];
-                    $found['Country'] = $Disciple['phone_no'];
+                    $found['First_Name'] = $Disciple['full_name'];
+                    $found['Password'] = $Disciple['password'];
+                    $found['Email'] = $Disciple['email'];
+                    $found['Phone'] = $Disciple['phone'];
+                    $found['Pic'] = $Disciple['picture'];
                     array_push($ben['Disciples'],$found);
                 }
             }
