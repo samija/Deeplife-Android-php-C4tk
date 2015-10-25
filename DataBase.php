@@ -18,22 +18,18 @@ class DataBase {
     public function my_Exceptions($expt){
 
     }
-    public function add_new_user($SureName, $FirstName, $MiddleName,$DisplayName,$Email,$Phone,$Country,$Password,$MentorID,$Picture){
+    public function add_new_user($Full_Name, $Password, $Email,$Phone,$Picture,$Mentor_ID){
         $res = array();
         $res['status'] = 1;
         try {
-            $sql = "INSERT INTO users(email, country, phone_no, picture, password, mentor_id, firstName, displayName, middleName, sureName) VALUES (:us_em,:us_cu,:us_ph,:us_pi,password(:us_ps),:us_mt,:us_fn,:us_dn,:us_mn,:us_sn)";
+            $sql = "INSERT INTO users (full_name, password, email, phone, picture, mentor_id) VALUES (:us_fn,password(:us_ps),:us_em,:us_ph,,:us_pc,:us_mn)";
             $stmt = $this->connection->prepare($sql);
-            $stmt->bindvalue(':us_em', $Email, PDO::PARAM_STR);
-            $stmt->bindvalue(':us_cu', $Country, PDO::PARAM_STR);
-            $stmt->bindvalue(':us_ph', $Phone, PDO::PARAM_STR);
-            $stmt->bindvalue(':us_pi', $Picture, PDO::PARAM_STR);
+            $stmt->bindvalue(':us_fn', $Full_Name, PDO::PARAM_STR);
             $stmt->bindvalue(':us_ps', $Password, PDO::PARAM_STR);
-            $stmt->bindvalue(':us_mt', $MentorID, PDO::PARAM_INT);
-            $stmt->bindvalue(':us_fn', $FirstName, PDO::PARAM_STR);
-            $stmt->bindvalue(':us_dn', $DisplayName, PDO::PARAM_STR);
-            $stmt->bindvalue(':us_mn', $MiddleName, PDO::PARAM_STR);
-            $stmt->bindvalue(':us_sn', $SureName, PDO::PARAM_STR);
+            $stmt->bindvalue(':us_em', $Email, PDO::PARAM_STR);
+            $stmt->bindvalue(':us_ph', $Phone, PDO::PARAM_STR);
+            $stmt->bindvalue(':us_pc', $Picture, PDO::PARAM_STR);
+            $stmt->bindvalue(':us_mn', $Mentor_ID, PDO::PARAM_INT);
             $stmt->execute();
         } catch (PDOException $e) {
             $res['status'] = 0;
@@ -50,6 +46,23 @@ class DataBase {
             $sql = "SELECT * FROM users WHERE email=:us_em AND password=password(:us_ps)";
             $stmt = $this->connection->prepare($sql);
             $stmt->bindvalue(':us_em', $Email, PDO::PARAM_STR);
+            $stmt->bindvalue(':us_ps', $Password, PDO::PARAM_STR);
+            $stmt->execute();
+            $res['result'] = $stmt->fetch();
+        } catch (PDOException $e) {
+            $res['status'] = 0;
+            $res['report'] = $e->getMessage();
+        }
+        return $res;
+    }
+    public function get_user_($Phone,$Password)
+    {
+        $res = array();
+        $res['status'] = 1;
+        try {
+            $sql = "SELECT * FROM users WHERE phone=:us_ph AND password=password(:us_ps)";
+            $stmt = $this->connection->prepare($sql);
+            $stmt->bindvalue(':us_ph', $Phone, PDO::PARAM_STR);
             $stmt->bindvalue(':us_ps', $Password, PDO::PARAM_STR);
             $stmt->execute();
             $res['result'] = $stmt->fetch();
