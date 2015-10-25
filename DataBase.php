@@ -123,4 +123,54 @@ class DataBase {
         }
         return $res;
     }
+    public function add_new_schedule($User_ID, $Time, $Description){
+        $res = array();
+        $res['status'] = 1;
+        try {
+            $sql = "INSERT INTO user_schedule(user_id, time, description) VALUES (:us_id,:us_tm,:us_ds)";
+            $stmt = $this->connection->prepare($sql);
+            $stmt->bindvalue(':us_id', $User_ID, PDO::PARAM_INT);
+            $stmt->bindvalue(':us_tm', $Time, PDO::PARAM_STR);
+            $stmt->bindvalue(':us_ds', $Description, PDO::PARAM_STR);
+            $stmt->execute();
+        } catch (PDOException $e) {
+            $res['status'] = 0;
+            $res['report'] = $e->getMessage();
+            $this->my_Exceptions($res);
+        }
+        return $res;
+    }
+    public function get_Schedules($User_ID){
+        $res = array();
+        $res['status'] = 1;
+        try {
+            $sql = "SELECT * FROM user_schedule WHERE user_id=:us_id";
+            $stmt = $this->connection->prepare($sql);
+            $stmt->bindvalue(':us_id', $User_ID, PDO::PARAM_INT);
+            $stmt->execute();
+            while ($row = $stmt->fetch()) {
+                $res['result'][] = $row;
+            }
+        } catch (PDOException $e) {
+            $res['status'] = 0;
+            $res['report'] = $e->getMessage();
+            $this->my_Exceptions($res);
+        }
+        return $res;
+    }
+    public function delete_Schedule($User_ID){
+        $res = array();
+        $res['status'] = 1;
+        try{
+            $sql = "DELETE FROM user_schedule WHERE user_id=:c_id";
+            $stmt = $this->connection->prepare($sql);
+            $stmt->bindvalue(':c_id', $User_ID, PDO::PARAM_INT);
+            $stmt->execute();
+        }catch(PDOException $e)
+        {
+            $res['status'] =0;
+            $res['report'] = $e->getMessage();
+        }
+        return $res;
+    }
 }
