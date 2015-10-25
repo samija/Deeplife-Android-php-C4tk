@@ -31,6 +31,9 @@ if(isset($_POST['US_Email']) && isset($_POST['US_Password'])){
                     array_push($ben['Disciples'],$found);
                 }
             }
+        }elseif(isset($_POST['Task']) && $_POST['Task'] == "Send_Schedule"){
+
+
         }
     }
 }
