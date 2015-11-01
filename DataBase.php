@@ -16,6 +16,7 @@ class DataBase {
         $this->connection->query("USE DeepLife"); // datebase selection
     }
     public function my_Exceptions($expt){
+		
 
     }
     public function add_new_user($Full_Name, $Password, $Email,$Phone,$Picture,$Mentor_ID){
