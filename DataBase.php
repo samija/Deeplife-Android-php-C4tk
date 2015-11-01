@@ -18,11 +18,11 @@ class DataBase {
     public function my_Exceptions($expt){
 
     }
-    public function add_new_user($Full_Name, $Password, $Email,$Phone,$Picture,$Mentor_ID){
+    public function add_new_user($Full_Name, $Password, $Email,$Phone,$Phase,$Gender,$Country,$Picture,$Mentor_ID){
         $res = array();
         $res['status'] = 1;
         try {
-            $sql = "INSERT INTO users (full_name, password, email, phone, picture, mentor_id) VALUES (:us_fn,password(:us_ps),:us_em,:us_ph,:us_pc,:us_mn)";
+            $sql = "INSERT INTO users (full_name, password, email, phone, picture, mentor_id, phase, gender, country) VALUES (:us_fn,password(:us_ps),:us_em,:us_ph,:us_pc,:us_mn,:us_hs,:us_gn,:us_cn)";
             $stmt = $this->connection->prepare($sql);
             $stmt->bindvalue(':us_fn', $Full_Name, PDO::PARAM_STR);
             $stmt->bindvalue(':us_ps', $Password, PDO::PARAM_STR);
@@ -30,6 +30,9 @@ class DataBase {
             $stmt->bindvalue(':us_ph', $Phone, PDO::PARAM_STR);
             $stmt->bindvalue(':us_pc', $Picture, PDO::PARAM_STR);
             $stmt->bindvalue(':us_mn', $Mentor_ID, PDO::PARAM_INT);
+            $stmt->bindvalue(':us_hs', $Phase, PDO::PARAM_STR);
+            $stmt->bindvalue(':us_gn', $Gender, PDO::PARAM_STR);
+            $stmt->bindvalue(':us_cn', $Country, PDO::PARAM_INT);
             $stmt->execute();
         } catch (PDOException $e) {
             $res['status'] = 0;
