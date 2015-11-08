@@ -205,7 +205,7 @@ class DataBase {
         $res = array();
         $res['status'] = 1;
         try {
-            $sql = "SELECT * FROM users WHERE mentor_id !=:us_id  AND (id NOT IN (SELECT mentor_id FROM mentor_log WHERE user_id=:us_id ))";
+            $sql = "SELECT * FROM users WHERE mentor_id=:us_id  AND (id NOT IN (SELECT mentor_id FROM mentor_log WHERE user_id=:us_id ))";
             $stmt = $this->connection->prepare($sql);
             $stmt->bindvalue(':us_id', $User_id, PDO::PARAM_INT);
             $stmt->execute();
