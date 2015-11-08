@@ -1,7 +1,7 @@
 <?php
 require_once 'DataBase.php';
 $MyDB = new DataBase();
-$res = $MyDB->get_Schedules('1262');
+$res = $MyDB->get_new_childrens('1262');
 print_r($res);
 //print_r($MyDB->add_new_user('sds','sdsd','midd','dis','BENGEOS','phone','coun','BENGEOS','1','picture'))
 /*$val = $MyDB->get_user('BENGEOS','BENGEOS')['result'];
