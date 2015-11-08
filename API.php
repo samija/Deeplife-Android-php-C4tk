@@ -112,6 +112,10 @@ if(isset($_POST['Email_Phone']) && isset($_POST['Password'])){
 
 }
 if(isset($_POST['Task']) && $_POST['Task']== "Register"){
+    $MyDB = new DataBase();
+    $file = fopen("test1.txt","a");
+    fwrite($file,json_encode($_POST));
+    fclose($file);
 
     $Profiles = $MyDB->get_profile_($_POST['Email']);
 
