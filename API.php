@@ -109,30 +109,31 @@ if(isset($_POST['Email_Phone']) && isset($_POST['Password'])){
             }
         }
     }
-    if(isset($_POST['Task']) && $_POST['Task']== "Register"){
 
-            $Profiles = $MyDB->get_profile_($_POST['Email_Phone']);
+}
+if(isset($_POST['Task']) && $_POST['Task']== "Register"){
 
-            if(isset($Profiles) && isset($Profiles['result']) && is_array($Profiles['result'])){
-                $Profile = $Profiles['result'];
-                $profile_id = $Profile['id'];
-                $state = $MyDB->update_user($profile_id,$_POST['Full_Name'],$_POST['Password'],$_POST['Email'],$_POST['Phone'],$_POST['Pic']);
-            }else{
-                add_new_user($_POST['Full_Name'],$_POST['Password'],$_POST['Email'],$_POST['Phone'],$_POST['Build_phase'],$_POST['Gender'],$_POST['Country'],$_POST['Picture'],$User_ID);
-            }
+    $Profiles = $MyDB->get_profile_($_POST['Email']);
+
+    if(isset($Profiles) && isset($Profiles['result']) && is_array($Profiles['result'])){
+        $Profile = $Profiles['result'];
+        $profile_id = $Profile['id'];
+        $state = $MyDB->update_user($profile_id,$_POST['Full_Name'],$_POST['Password'],$_POST['Email'],$_POST['Phone'],$_POST['Picture']);
+    }else{
+        $MyDB->add_new_user($_POST['Full_Name'],$_POST['Password'],$_POST['Email'],$_POST['Phone'],$_POST['Build_phase'],$_POST['Gender'],$_POST['Country'],$_POST['Picture'],$User_ID);
+    }
 
 
-            $Profiles = $MyDB->get_profile($_POST['Phone'],$_POST['Password']);
-            if(isset($Profiles) && isset($Profiles['result'])){
-                $Profile = $Profiles['result'];
-                $found = array();
-                $found['Full_Name'] = $Profile['full_name'];
-                $found['Email'] = $Profile['email'];
-                $found['Phone'] = $Profile['phone'];
-                $found['Password'] = $_POST['Password'];
-                $found['Country'] = $Profile['phone'];
-                array_push($ben['User_Profile'],$found);
-            }
+    $Profiles = $MyDB->get_profile($_POST['Phone'],$_POST['Password']);
+    if(isset($Profiles) && isset($Profiles['result'])){
+        $Profile = $Profiles['result'];
+        $found = array();
+        $found['Full_Name'] = $Profile['full_name'];
+        $found['Email'] = $Profile['email'];
+        $found['Phone'] = $Profile['phone'];
+        $found['Password'] = $_POST['Password'];
+        $found['Country'] = $Profile['phone'];
+        array_push($ben['User_Profile'],$found);
     }
 }
 
