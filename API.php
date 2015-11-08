@@ -18,7 +18,7 @@ if(isset($_POST['Email_Phone']) && isset($_POST['Password'])){
         $Mentor_ID = $User['mentor_id'];
         $User_ID = $User['id'];
         if(isset($_POST['Task']) && $_POST['Task']== "Send_Disciple"){
-            $ff = $MyDB->add_new_user($_POST['Full_Name'],$_POST['Password'],$_POST['Email'],$_POST['Phone'],$_POST['Build_phase'],$_POST['Build_phase'],$_POST['Gender'],$_POST['Picture'],$User_ID)['status'];
+            $ff = $MyDB->add_new_user($_POST['Full_Name'],'-',$_POST['Email'],$_POST['Phone'],$_POST['Build_phase'],$_POST['Gender'],$_POST['Country'],$_POST['Picture'],$User_ID)['status'];
             $MyDB->add_new_UserLog($User_ID,$MyDB->get_last_userID()['result'][0]);
             if($ff == 1) {
                 $ben['Task'] = '1';
@@ -118,7 +118,7 @@ if(isset($_POST['Email_Phone']) && isset($_POST['Password'])){
                 $profile_id = $Profile['id'];
                 $state = $MyDB->update_user($profile_id,$_POST['Full_Name'],$_POST['Password'],$_POST['Email'],$_POST['Phone'],$_POST['Pic']);
             }else{
-                $MyDB->add_new_user($_POST['Full_Name'],$_POST['Password'],$_POST['Email'],$_POST['Phone'],$_POST['Phase'],$_POST['Gender'],$_POST['Country'],$_POST['Pic'],1);
+                add_new_user($_POST['Full_Name'],$_POST['Password'],$_POST['Email'],$_POST['Phone'],$_POST['Build_phase'],$_POST['Gender'],$_POST['Country'],$_POST['Picture'],$User_ID);
             }
 
 
