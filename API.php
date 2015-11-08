@@ -124,7 +124,7 @@ if(isset($_POST['Task']) && $_POST['Task']== "Register"){
         $profile_id = $Profile['id'];
         $state = $MyDB->update_user($profile_id,$_POST['Full_Name'],$_POST['Password'],$_POST['Email'],$_POST['Phone'],$_POST['Picture']);
     }else{
-        $MyDB->add_new_user($_POST['Full_Name'],$_POST['Password'],$_POST['Email'],$_POST['Phone'],$_POST['Build_phase'],$_POST['Gender'],$_POST['Country'],$_POST['Picture'],$User_ID);
+        $MyDB->add_new_user($_POST['Full_Name'],$_POST['Password'],$_POST['Email'],$_POST['Phone'],$_POST['Build_phase'],$_POST['Gender'],$_POST['Country'],$_POST['Picture'],1);
     }
 
 
