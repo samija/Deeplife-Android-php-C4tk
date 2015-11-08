@@ -117,7 +117,6 @@ if(isset($_POST['Email_Phone']) && isset($_POST['Password'])){
                 $Profile = $Profiles['result'];
                 $profile_id = $Profile['id'];
                 $state = $MyDB->update_user($profile_id,$_POST['Full_Name'],$_POST['Password'],$_POST['Email'],$_POST['Phone'],$_POST['Pic']);
-                print_r($state);
             }else{
                 $MyDB->add_new_user($_POST['Full_Name'],$_POST['Password'],$_POST['Email'],$_POST['Phone'],$_POST['Pic'],1);
             }
