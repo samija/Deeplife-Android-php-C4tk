@@ -13,7 +13,7 @@ class DataBase {
     public function __construct(){
         $this->database = new DB_Access();
         $this->connection = $this->database->pass_connection();
-        $this->connection->query("USE DeepLife"); // datebase selection
+        $this->connection->query("USE seacccor_deeplifesys"); // datebase selection
     }
     public function my_Exceptions($expt){
 		
