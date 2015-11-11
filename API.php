@@ -11,18 +11,8 @@ $ben['Schedules'] = array();
 $ben['User_Profile'] = array();
 $ben['Questions'] = array();
 if(isset($_POST['Email_Phone']) && isset($_POST['Password'])){
-
-
-    $MyDB = new DataBase();
-    $file = fopen("test4.txt","a");
-    fwrite($file,json_encode($_POST));
-    fclose($file);
-
     $User = $MyDB->get_profile($_POST['Email_Phone'],$_POST['Password']);
     if(isset($User) && isset($User['result']) && is_array($User['result'])){
-
-
-
         $User = $User['result'];
         $Mentor_ID = $User['mentor_id'];
         $User_ID = $User['id'];
@@ -134,11 +124,6 @@ if(isset($_POST['Email_Phone']) && isset($_POST['Password'])){
         }
         if(isset($_POST['Task']) && $_POST['Task']== "Authenticate"){
 
-            $MyDB = new DataBase();
-            $file = fopen("test3.txt","a");
-            fwrite($file,json_encode($_POST));
-            fclose($file);
-
             $Profiles = $MyDB->get_profile($_POST['Email_Phone'],$_POST['Password']);
             if(isset($Profiles) && isset($Profiles['result'])){
                 $Profile = $Profiles['result'];
@@ -155,10 +140,7 @@ if(isset($_POST['Email_Phone']) && isset($_POST['Password'])){
 
 }
 if(isset($_POST['Task']) && $_POST['Task']== "Register"){
-
-
     $Profiles = $MyDB->get_profile_($_POST['Email'],"-");
-
     if(isset($Profiles) && isset($Profiles['result']) && is_array($Profiles['result'])){
         $Profile = $Profiles['result'];
         $profile_id = $Profile['id'];
@@ -166,8 +148,6 @@ if(isset($_POST['Task']) && $_POST['Task']== "Register"){
     }else{
         $MyDB->add_new_user($_POST['Full_Name'],$_POST['Password'],$_POST['Email'],$_POST['Phone'],$_POST['Build_phase'],$_POST['Gender'],$_POST['Country'],$_POST['Picture'],1);
     }
-
-
     $Profiles = $MyDB->get_profile($_POST['Phone'],$_POST['Password']);
     if(isset($Profiles) && isset($Profiles['result'])){
         $Profile = $Profiles['result'];
@@ -181,4 +161,10 @@ if(isset($_POST['Task']) && $_POST['Task']== "Register"){
     }
 }
 echo json_encode($ben);
+/*
+ * $MyDB = new DataBase();
+            $file = fopen("test3.txt","a");
+            fwrite($file,json_encode($_POST));
+            fclose($file);
+ */
 ?>
