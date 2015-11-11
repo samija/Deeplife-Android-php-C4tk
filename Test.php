@@ -14,7 +14,7 @@ if($val == null){
 <form method="POST" action="API.php">
     User ID<input type="text" name="Email_Phone" value="ben"><br>
     User Pass<input type="text" name="Password" value="ben"><br>
-    Request Code <input type="text" name="Authenticate" value="My_Disciples"><br>
+    <input type="text" name="Task" value="Authenticate"><br>
     <input type="text" name="Email" value="BENGEOS"><br>
     <input type="text" name="Phone" value="091641"><br>
     <input type="text" name="Pic" value="BENGEOS"><br>
