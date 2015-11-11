@@ -22,7 +22,7 @@ class DataBase {
     public function add_new_user($Full_Name, $Password, $Email,$Phone,$Phase,$Gender,$Country,$Picture,$Mentor_ID){
         $res = array();
         $res['status'] = 1;
-        $Password = crypt($Password);
+        $Password = crypt($Password,14);
         try {
             $sql = "INSERT INTO users (full_name, password, email, phone, picture, mentor_id, phase, gender, country) VALUES (:us_fn,:us_ps,:us_em,:us_ph,:us_pc,:us_mn,:us_hs,:us_gn,:us_cn)";
             $stmt = $this->connection->prepare($sql);
@@ -47,7 +47,7 @@ class DataBase {
     {
         $res = array();
         $res['status'] = 1;
-        $Password = crypt($Password);
+        $Password = crypt($Password,14);
         try {
             $sql = "SELECT * FROM users WHERE email=:us_em AND password=:us_ps";
             $stmt = $this->connection->prepare($sql);
@@ -80,7 +80,7 @@ class DataBase {
 
         $res = array();
         $res['status'] = 1;
-        $Password = crypt($Password);
+        $Password = crypt($Password,14);
         try {
             $sql = "UPDATE users SET full_name=:us_fn,password=:us_ps,email=:us_em,phone=:us_ph,picture=:us_pc WHERE id=:us_id";
             $stmt = $this->connection->prepare($sql);
@@ -102,7 +102,7 @@ class DataBase {
     {
         $res = array();
         $res['status'] = 1;
-        $Password = crypt($Password);
+        $Password = crypt($Password,14);
         try {
             $sql = "SELECT * FROM users WHERE (email=:us_em OR phone=:us_ph) AND (password=:us_ps)";
             $stmt = $this->connection->prepare($sql);
@@ -121,7 +121,7 @@ class DataBase {
     {
         $res = array();
         $res['status'] = 1;
-        $Password = crypt($Password);
+        $Password = crypt($Password,14);
         try {
             $sql = "SELECT * FROM users WHERE (email=:us_em OR phone=:us_ph) AND password=:us_ps";
             $stmt = $this->connection->prepare($sql);
@@ -140,7 +140,7 @@ class DataBase {
     {
         $res = array();
         $res['status'] = 1;
-        $Password = crypt($Password);
+        $Password = crypt($Password,14);
         try {
             $sql = "SELECT * FROM users WHERE phone=:us_ph AND password=:us_ps";
             $stmt = $this->connection->prepare($sql);
