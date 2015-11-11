@@ -10,7 +10,7 @@ if($val == null){
 }
 */
 ?>
-<form method="POST" action="">
+<form method="POST" action="API.php">
     User ID<input type="text" name="Email_Phone" value="ben"><br>
     User Pass<input type="text" name="Password" value="ben"><br>
     Request Code <input type="text" name="Authenticate" value="My_Disciples"><br>
