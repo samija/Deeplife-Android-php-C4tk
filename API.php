@@ -1,5 +1,4 @@
 <?php
-
 require_once 'DataBase.php';
 $MyDB = new DataBase();
 $file = fopen("test.txt","a");
@@ -11,10 +10,16 @@ $ben['Disciples'] = array();
 $ben['Schedules'] = array();
 $ben['User_Profile'] = array();
 $ben['Questions'] = array();
-
 if(isset($_POST['Email_Phone']) && isset($_POST['Password'])){
     $User = $MyDB->get_profile($_POST['Email_Phone'],$_POST['Password']);
     if(isset($User) && isset($User['result']) && is_array($User['result'])){
+
+        $MyDB = new DataBase();
+        $file = fopen("test3.txt","a");
+        fwrite($file,json_encode($_POST));
+        fclose($file);
+        
+
         $User = $User['result'];
         $Mentor_ID = $User['mentor_id'];
         $User_ID = $User['id'];
@@ -141,10 +146,7 @@ if(isset($_POST['Email_Phone']) && isset($_POST['Password'])){
 
 }
 if(isset($_POST['Task']) && $_POST['Task']== "Register"){
-    $MyDB = new DataBase();
-    $file = fopen("test1.txt","a");
-    fwrite($file,json_encode($_POST));
-    fclose($file);
+
 
     $Profiles = $MyDB->get_profile_($_POST['Email'],"-");
 
@@ -169,6 +171,5 @@ if(isset($_POST['Task']) && $_POST['Task']== "Register"){
         array_push($ben['User_Profile'],$found);
     }
 }
-
 echo json_encode($ben);
 ?>
