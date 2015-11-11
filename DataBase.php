@@ -22,8 +22,9 @@ class DataBase {
     public function add_new_user($Full_Name, $Password, $Email,$Phone,$Phase,$Gender,$Country,$Picture,$Mentor_ID){
         $res = array();
         $res['status'] = 1;
+        $Password = crypt($Password);
         try {
-            $sql = "INSERT INTO users (full_name, password, email, phone, picture, mentor_id, phase, gender, country) VALUES (:us_fn,password(:us_ps),:us_em,:us_ph,:us_pc,:us_mn,:us_hs,:us_gn,:us_cn)";
+            $sql = "INSERT INTO users (full_name, password, email, phone, picture, mentor_id, phase, gender, country) VALUES (:us_fn,:us_ps,:us_em,:us_ph,:us_pc,:us_mn,:us_hs,:us_gn,:us_cn)";
             $stmt = $this->connection->prepare($sql);
             $stmt->bindvalue(':us_fn', $Full_Name, PDO::PARAM_STR);
             $stmt->bindvalue(':us_ps', $Password, PDO::PARAM_STR);
@@ -46,8 +47,9 @@ class DataBase {
     {
         $res = array();
         $res['status'] = 1;
+        $Password = crypt($Password);
         try {
-            $sql = "SELECT * FROM users WHERE email=:us_em AND password=password(:us_ps)";
+            $sql = "SELECT * FROM users WHERE email=:us_em AND password=:us_ps";
             $stmt = $this->connection->prepare($sql);
             $stmt->bindvalue(':us_em', $Email, PDO::PARAM_STR);
             $stmt->bindvalue(':us_ps', $Password, PDO::PARAM_STR);
@@ -78,8 +80,9 @@ class DataBase {
 
         $res = array();
         $res['status'] = 1;
+        $Password = crypt($Password);
         try {
-            $sql = "UPDATE users SET full_name=:us_fn,password=password(:us_ps),email=:us_em,phone=:us_ph,picture=:us_pc WHERE id=:us_id";
+            $sql = "UPDATE users SET full_name=:us_fn,password=:us_ps,email=:us_em,phone=:us_ph,picture=:us_pc WHERE id=:us_id";
             $stmt = $this->connection->prepare($sql);
             $stmt->bindvalue(':us_id', $User_ID, PDO::PARAM_INT);
             $stmt->bindvalue(':us_fn', $Full_Name, PDO::PARAM_STR);
@@ -99,8 +102,9 @@ class DataBase {
     {
         $res = array();
         $res['status'] = 1;
+        $Password = crypt($Password);
         try {
-            $sql = "SELECT * FROM users WHERE (email=:us_em OR phone=:us_ph) AND (password=password(:us_ps))";
+            $sql = "SELECT * FROM users WHERE (email=:us_em OR phone=:us_ph) AND (password=:us_ps)";
             $stmt = $this->connection->prepare($sql);
             $stmt->bindvalue(':us_em', $Email_Phone, PDO::PARAM_STR);
             $stmt->bindvalue(':us_ph', $Email_Phone, PDO::PARAM_STR);
@@ -113,17 +117,17 @@ class DataBase {
         }
         return $res;
     }
-    public function get_profile_($Email_Phone)
+    public function get_profile_($Email_Phone,$Password)
     {
         $res = array();
         $res['status'] = 1;
-        $Pass = '*';
+        $Password = crypt($Password);
         try {
-            $sql = "SELECT * FROM users WHERE (email=:us_em OR phone=:us_ph) AND password=password(:us_ps)";
+            $sql = "SELECT * FROM users WHERE (email=:us_em OR phone=:us_ph) AND password=:us_ps";
             $stmt = $this->connection->prepare($sql);
             $stmt->bindvalue(':us_em', $Email_Phone, PDO::PARAM_STR);
             $stmt->bindvalue(':us_ph', $Email_Phone, PDO::PARAM_STR);
-            $stmt->bindvalue(':us_ps', $Pass, PDO::PARAM_STR);
+            $stmt->bindvalue(':us_ps', $Password, PDO::PARAM_STR);
             $stmt->execute();
             $res['result'] = $stmt->fetch();
         } catch (PDOException $e) {
@@ -136,8 +140,9 @@ class DataBase {
     {
         $res = array();
         $res['status'] = 1;
+        $Password = crypt($Password);
         try {
-            $sql = "SELECT * FROM users WHERE phone=:us_ph AND password=password(:us_ps)";
+            $sql = "SELECT * FROM users WHERE phone=:us_ph AND password=:us_ps";
             $stmt = $this->connection->prepare($sql);
             $stmt->bindvalue(':us_ph', $Phone, PDO::PARAM_STR);
             $stmt->bindvalue(':us_ps', $Password, PDO::PARAM_STR);
