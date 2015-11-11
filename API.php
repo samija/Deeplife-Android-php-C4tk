@@ -18,7 +18,7 @@ if(isset($_POST['Email_Phone']) && isset($_POST['Password'])){
         $file = fopen("test3.txt","a");
         fwrite($file,json_encode($_POST));
         fclose($file);
-        
+
 
         $User = $User['result'];
         $Mentor_ID = $User['mentor_id'];
