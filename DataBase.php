@@ -387,4 +387,74 @@ class DataBase {
         }
         return $res;
     }
+    public function add_new_question($Category,$Description,$Note,$Mandatory){
+        $res = array();
+        $res['status'] = 1;
+        try {
+            $sql = "INSERT INTO questions(category, description, note, mandatory) VALUES (:qs_ct,:qs_ds,:qs_nt,:qs_mn)";
+            $stmt = $this->connection->prepare($sql);
+            $stmt->bindvalue(':qs_ct', $Category, PDO::PARAM_STR);
+            $stmt->bindvalue(':qs_ds', $Description, PDO::PARAM_STR);
+            $stmt->bindvalue(':qs_nt', $Note, PDO::PARAM_STR);
+            $stmt->bindvalue(':qs_mn', $Mandatory, PDO::PARAM_STR);
+            $stmt->execute();
+        } catch (PDOException $e) {
+            $res['status'] = 0;
+            $res['report'] = $e->getMessage();
+            $this->my_Exceptions($res);
+        }
+        return $res;
+    }
+    public function get_all_questions(){
+        $res = array();
+        $res['status'] = 1;
+        try {
+            $sql = "SELECT * FROM questions";
+            $stmt = $this->connection->prepare($sql);
+            $stmt->execute();
+            while ($row = $stmt->fetch()) {
+                $res['result'][] = $row;
+            }
+        } catch (PDOException $e) {
+            $res['status'] = 0;
+            $res['report'] = $e->getMessage();
+            $this->my_Exceptions($res);
+        }
+        return $res;
+    }
+    public function get_new_questions_for($User_ID){
+        $res = array();
+        $res['status'] = 1;
+        try {
+            $sql = "SELECT * FROM questions WHERE id NOT IN (SELECT question_id FROM question_log WHERE user_id=:us_id )";;
+            $stmt = $this->connection->prepare($sql);
+            $stmt->bindvalue(':us_id', $User_ID, PDO::PARAM_INT);
+            $stmt->execute();
+            while ($row = $stmt->fetch()) {
+                $res['result'][] = $row;
+
+            }
+        } catch (PDOException $e) {
+            $res['status'] = 0;
+            $res['report'] = $e->getMessage();
+            $this->my_Exceptions($res);
+        }
+        return $res;
+    }
+    public function add_new_Question_Log($User_ID,$Question_ID){
+        $res = array();
+        $res['status'] = 1;
+        try {
+            $sql = "INSERT INTO question_log( user_id, question_id) VALUES (:us_id,:qs_id)";
+            $stmt = $this->connection->prepare($sql);
+            $stmt->bindvalue(':us_id', $User_ID, PDO::PARAM_INT);
+            $stmt->bindvalue(':qs_id', $Question_ID, PDO::PARAM_INT);
+            $stmt->execute();
+        } catch (PDOException $e) {
+            $res['status'] = 0;
+            $res['report'] = $e->getMessage();
+            $this->my_Exceptions($res);
+        }
+        return $res;
+    }
 }
