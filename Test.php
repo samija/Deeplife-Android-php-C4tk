@@ -2,7 +2,9 @@
 
 require_once 'DataBase.php';
 $MyDB = new DataBase();
-$res = $MyDB->add_new_user("ben","ben","ben@ben","091641","1","Male","Ethiopia","c:---","1");
+//$res = $MyDB->add_new_user("ben","ben","ben@ben","091641","1","Male","Ethiopia","c:---","1");
+$res = $MyDB->get_profile_("ben","ben");
+
 print_r($res);
 //print_r($MyDB->add_new_user('sds','sdsd','midd','dis','BENGEOS','phone','coun','BENGEOS','1','picture'))
 /*$val = $MyDB->get_user('BENGEOS','BENGEOS')['result'];
