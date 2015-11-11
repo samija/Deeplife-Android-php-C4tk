@@ -25,10 +25,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="DataBase.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DataBase.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DataBase.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.33259425" vertical-offset="855" max-vertical-offset="6900">
+            <state vertical-scroll-proportion="-3.75" vertical-offset="855" max-vertical-offset="6900">
               <caret line="82" column="25" selection-start-line="82" selection-start-column="20" selection-end-line="82" selection-end-column="25" />
               <folding>
                 <element signature="e#6#95#0#PHP" expanded="false" />
@@ -77,11 +77,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Test.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Test.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Test.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.375" vertical-offset="0" max-vertical-offset="510">
-              <caret line="7" column="10" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
+            <state vertical-scroll-proportion="0.10960334" vertical-offset="0" max-vertical-offset="958">
+              <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -147,8 +147,8 @@
         <option value="$PROJECT_DIR$/DB_Access.php" />
         <option value="$PROJECT_DIR$/test.txt" />
         <option value="$PROJECT_DIR$/API.php" />
-        <option value="$PROJECT_DIR$/Test.php" />
         <option value="$PROJECT_DIR$/DataBase.php" />
+        <option value="$PROJECT_DIR$/Test.php" />
       </list>
     </option>
   </component>
@@ -915,14 +915,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Test.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.375" vertical-offset="0" max-vertical-offset="510">
-          <caret line="7" column="10" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/com/jetbrains/php/lang/psi/stubs/data/standard_7.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-13.625" vertical-offset="3153" max-vertical-offset="16770">
@@ -933,7 +925,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/DataBase.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33259425" vertical-offset="855" max-vertical-offset="6900">
+        <state vertical-scroll-proportion="-3.75" vertical-offset="855" max-vertical-offset="6900">
           <caret line="82" column="25" selection-start-line="82" selection-start-column="20" selection-end-line="82" selection-end-column="25" />
           <folding>
             <element signature="e#6#95#0#PHP" expanded="false" />
@@ -968,6 +960,14 @@
             <marker date="1447280035000" expanded="true" signature="16532:16586" placeholder="INSERT INTO ..." />
             <marker date="1447280035000" expanded="true" signature="16532:16602" placeholder="INSERT INTO ..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Test.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.10960334" vertical-offset="0" max-vertical-offset="958">
+          <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+          <folding />
         </state>
       </provider>
     </entry>
