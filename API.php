@@ -12,14 +12,11 @@ $ben['User_Profile'] = array();
 $ben['Questions'] = array();
 if(isset($_POST['Email_Phone']) && isset($_POST['Password'])){
 
-    $MyDB = new DataBase();
-    $file = fopen("test3.txt","a");
-    fwrite($file,json_encode($_POST));
-    fclose($file);
+
 
     $User = $MyDB->get_profile($_POST['Email_Phone'],$_POST['Password']);
     if(isset($User) && isset($User['result']) && is_array($User['result'])){
-        
+
 
 
         $User = $User['result'];
@@ -132,6 +129,12 @@ if(isset($_POST['Email_Phone']) && isset($_POST['Password'])){
             }
         }
         if(isset($_POST['Task']) && $_POST['Task']== "Authenticate"){
+            
+            $MyDB = new DataBase();
+            $file = fopen("test3.txt","a");
+            fwrite($file,json_encode($_POST));
+            fclose($file);
+
             $Profiles = $MyDB->get_profile($_POST['Email_Phone'],$_POST['Password']);
             if(isset($Profiles) && isset($Profiles['result'])){
                 $Profile = $Profiles['result'];
