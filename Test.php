@@ -2,9 +2,8 @@
 
 require_once 'DataBase.php';
 $MyDB = new DataBase();
-//$res = $MyDB->add_new_user("ben","ben","ben@ben","091641","1","Male","Ethiopia","c:---","1");
-$res = $MyDB->get_profile_("ben","ben");
-
+$res = $MyDB->add_new_user("ben","ben","ben@ben","091641","1","Male","Ethiopia","c:---","1");
+//
 print_r(crypt("ben",14));
 
 print_r($res);
