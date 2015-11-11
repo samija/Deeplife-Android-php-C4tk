@@ -10,6 +10,7 @@ $ben['Task'] = '';
 $ben['Disciples'] = array();
 $ben['Schedules'] = array();
 $ben['User_Profile'] = array();
+$ben['Questions'] = array();
 
 if(isset($_POST['Email_Phone']) && isset($_POST['Password'])){
     $User = $MyDB->get_profile($_POST['Email_Phone'],$_POST['Password']);
@@ -57,6 +58,32 @@ if(isset($_POST['Email_Phone']) && isset($_POST['Password'])){
                     $found['Country'] = $Disciple['phone'];
                     array_push($ben['Disciples'],$found);
                     $MyDB->add_new_UserLog($User_ID,$Disciple['id']);
+                }
+            }
+        }elseif(isset($_POST['Task1']) && $_POST['Task1']== "Get_Questions"){
+            $Disciples = $MyDB->get_questions_for($User_ID);
+            if(isset($Disciples) && isset($Disciples['result'])){
+                foreach($Disciples['result'] as $Disciple){
+                    $found = array();
+                    $found['Category'] = $Disciple['category'];
+                    $found['Description'] = $Disciple['description'];
+                    $found['Note'] = $Disciple['note'];
+                    $found['Mandatory'] = $Disciple['mandatory'];
+                    array_push($ben['Questions'],$found);
+                    $MyDB->add_new_Question_Log($User_ID,$Disciple['id']);
+                }
+            }
+        }elseif(isset($_POST['Task1']) && $_POST['Task1']== "My_Questions"){
+            $Disciples = $MyDB->get_all_questions();
+            if(isset($Disciples) && isset($Disciples['result'])){
+                foreach($Disciples['result'] as $Disciple){
+                    $found = array();
+                    $found['Category'] = $Disciple['category'];
+                    $found['Description'] = $Disciple['description'];
+                    $found['Note'] = $Disciple['note'];
+                    $found['Mandatory'] = $Disciple['mandatory'];
+                    array_push($ben['Questions'],$found);
+                    $MyDB->add_new_Question_Log($User_ID,$Disciple['id']);
                 }
             }
         }
