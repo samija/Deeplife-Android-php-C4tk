@@ -1,4 +1,5 @@
 <?php
+/*
 require_once 'DataBase.php';
 $MyDB = new DataBase();
 $res = $MyDB->get_new_childrens($_POST['Email_Phone']);
