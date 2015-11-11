@@ -371,4 +371,20 @@ class DataBase {
         }
         return $res;
     }
+    public function add_new_roll_linker($User_ID,$Roll_Num){
+        $res = array();
+        $res['status'] = 1;
+        try {
+            $sql = "INSERT INTO user_role_linker (user_id, role_id) VALUES (:us_id,:sc_id)";
+            $stmt = $this->connection->prepare($sql);
+            $stmt->bindvalue(':us_id', $User_ID, PDO::PARAM_INT);
+            $stmt->bindvalue(':sc_id', $Roll_Num, PDO::PARAM_INT);
+            $stmt->execute();
+        } catch (PDOException $e) {
+            $res['status'] = 0;
+            $res['report'] = $e->getMessage();
+            $this->my_Exceptions($res);
+        }
+        return $res;
+    }
 }
