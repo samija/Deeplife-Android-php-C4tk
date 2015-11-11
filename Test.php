@@ -1,15 +1,14 @@
 <?php
-/*
+
 require_once 'DataBase.php';
 $MyDB = new DataBase();
-$res = $MyDB->get_new_childrens($_POST['Email_Phone']);
+$res = $MyDB->add_new_user("ben","ben","ben@ben","091641","1","Male","Ethiopia","c:---","1");
 print_r($res);
 //print_r($MyDB->add_new_user('sds','sdsd','midd','dis','BENGEOS','phone','coun','BENGEOS','1','picture'))
 /*$val = $MyDB->get_user('BENGEOS','BENGEOS')['result'];
 if($val == null){
     print_r('dfdwfssadfasdf');
 }
-*/
 ?>
 <form method="POST" action="API.php">
     User ID<input type="text" name="Email_Phone" value="ben"><br>
