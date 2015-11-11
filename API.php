@@ -19,6 +19,8 @@ if(isset($_POST['Email_Phone']) && isset($_POST['Password'])){
         $User_ID = $User['id'];
         if(isset($_POST['Task']) && $_POST['Task']== "Send_Disciple"){
             $ff = $MyDB->add_new_user($_POST['Full_Name'],'-',$_POST['Email'],$_POST['Phone'],$_POST['Build_phase'],$_POST['Gender'],$_POST['Country'],$_POST['Picture'],$User_ID)['status'];
+            $Last_ID = $MyDB->get_last_userID()['result'][0];
+            $MyDB->add_new_roll_linker($Last_ID,2);
             $MyDB->add_new_UserLog($User_ID,$MyDB->get_last_userID()['result'][0]);
             if($ff == 1) {
                 $ben['Task'] = '1';
@@ -117,7 +119,7 @@ if(isset($_POST['Task']) && $_POST['Task']== "Register"){
     fwrite($file,json_encode($_POST));
     fclose($file);
 
-    $Profiles = $MyDB->get_profile_($_POST['Email']);
+    $Profiles = $MyDB->get_profile_($_POST['Email'],"-");
 
     if(isset($Profiles) && isset($Profiles['result']) && is_array($Profiles['result'])){
         $Profile = $Profiles['result'];
