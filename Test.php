@@ -2,16 +2,7 @@
 
 require_once 'DataBase.php';
 $MyDB = new DataBase();
-$res = $MyDB->add_new_user("ben","ben","ben@ben","091641","1","Male","Ethiopia","c:---","1");
-//
-print_r(crypt("ben",14));
-
-print_r($res);
-//print_r($MyDB->add_new_user('sds','sdsd','midd','dis','BENGEOS','phone','coun','BENGEOS','1','picture'))
-$val = $MyDB->get_user('BENGEOS','BENGEOS')['result'];
-if($val == null){
-    print_r('dfdwfssadfasdf');
-}
+//$res = $MyDB->add_new_user("ben","ben","ben@ben","091641","1","Male","Ethiopia","c:---","1");
 ?>
 <form method="POST" action="API.php">
     User ID<input type="text" name="Email_Phone" value="ben@ben"><br>
