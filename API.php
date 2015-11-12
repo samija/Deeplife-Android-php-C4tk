@@ -32,14 +32,12 @@ if(isset($_POST['Email_Phone']) && isset($_POST['Password'])){
                 foreach($Disciples['result'] as $Disciple){
                     $found = array();
                     $found['Full_Name'] = $Disciple['full_name'];
-                    $found['Password'] = $Disciple['password'];
-                    $found['Email'] = $Disciple['email'];
+                    $found['Email'] = $Disciple['email	'];
                     $found['Phone'] = $Disciple['phone'];
-                    $found['Country'] = $Disciple['phone'];
-                    $found['Password'] = $Disciple['password'];
-                    $found['Email'] = $Disciple['email'];
-                    $found['Phone'] = $Disciple['phone'];
-                    $found['Country'] = $Disciple['phone'];
+                    $found['Country'] = $Disciple['country'];
+                    $found['Build_phase'] = $Disciple['phase'];
+                    $found['Gender'] = $Disciple['gender'];
+                    $found['Picture'] = $Disciple['picture'];
                     array_push($ben['Disciples'],$found);
                     $MyDB->add_new_UserLog($User_ID,$Disciple['id']);
                 }
