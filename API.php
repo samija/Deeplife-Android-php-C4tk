@@ -58,33 +58,8 @@ if(isset($_POST['Email_Phone']) && isset($_POST['Password'])){
                     $MyDB->add_new_UserLog($User_ID,$Disciple['id']);
                 }
             }
-        }elseif(isset($_POST['Task1']) && $_POST['Task1']== "Get_Questions"){
-            $Disciples = $MyDB->get_questions_for($User_ID);
-            if(isset($Disciples) && isset($Disciples['result'])){
-                foreach($Disciples['result'] as $Disciple){
-                    $found = array();
-                    $found['Category'] = $Disciple['category'];
-                    $found['Description'] = $Disciple['description'];
-                    $found['Note'] = $Disciple['note'];
-                    $found['Mandatory'] = $Disciple['mandatory'];
-                    array_push($ben['Questions'],$found);
-                    $MyDB->add_new_Question_Log($User_ID,$Disciple['id']);
-                }
-            }
-            }elseif(isset($_POST['Task1']) && $_POST['Task1']== "My_Questions"){
-            $Disciples = $MyDB->get_all_questions();
-            if(isset($Disciples) && isset($Disciples['result'])){
-                foreach($Disciples['result'] as $Disciple){
-                    $found = array();
-                    $found['Category'] = $Disciple['category'];
-                    $found['Description'] = $Disciple['description'];
-                    $found['Note'] = $Disciple['note'];
-                    $found['Mandatory'] = $Disciple['mandatory'];
-                    array_push($ben['Questions'],$found);
-                    $MyDB->add_new_Question_Log($User_ID,$Disciple['id']);
-                }
-            }
         }
+
         if(isset($_POST['Task']) && $_POST['Task'] == "Send_Schedule"){
             $res = $MyDB->add_new_schedule($User_ID,$_POST['Dis_Phone'],$_POST['Alarm_Time'],$_POST['Alarm_Repeat'],$_POST['Description'])['status'];
             $MyDB->add_new_scheduleLog($User_ID,$MyDB->get_last_scheduleID()['result'][0]);
@@ -122,6 +97,34 @@ if(isset($_POST['Email_Phone']) && isset($_POST['Password'])){
                 }
             }
         }
+        if(isset($_POST['Task3']) && $_POST['Task3']== "Get_Questions"){
+            $Disciples = $MyDB->get_questions_for($User_ID);
+            if(isset($Disciples) && isset($Disciples['result'])){
+                foreach($Disciples['result'] as $Disciple){
+                    $found = array();
+                    $found['Category'] = $Disciple['category'];
+                    $found['Description'] = $Disciple['description'];
+                    $found['Note'] = $Disciple['note'];
+                    $found['Mandatory'] = $Disciple['mandatory'];
+                    array_push($ben['Questions'],$found);
+                    $MyDB->add_new_Question_Log($User_ID,$Disciple['id']);
+                }
+            }
+        }elseif(isset($_POST['Task3']) && $_POST['Task3']== "My_Questions"){
+            $Disciples = $MyDB->get_all_questions();
+            if(isset($Disciples) && isset($Disciples['result'])){
+                foreach($Disciples['result'] as $Disciple){
+                    $found = array();
+                    $found['Category'] = $Disciple['category'];
+                    $found['Description'] = $Disciple['description'];
+                    $found['Note'] = $Disciple['note'];
+                    $found['Mandatory'] = $Disciple['mandatory'];
+                    array_push($ben['Questions'],$found);
+                    $MyDB->add_new_Question_Log($User_ID,$Disciple['id']);
+                }
+            }
+        }
+
         if(isset($_POST['Task']) && $_POST['Task']== "Authenticate"){
 
             $Profiles = $MyDB->get_profile($_POST['Email_Phone'],$_POST['Password']);
