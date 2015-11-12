@@ -61,6 +61,24 @@ class DataBase {
         }
         return $res;
     }
+    public function delete_User_of($Email_Phone){
+        $res = array();
+        $res['status'] = 1;
+        $Password = crypt("-",14);
+        try{
+            $sql = "DELETE FROM users WHERE (email=:us_em or phone=:us_ph) AND password:=us_ps";
+            $stmt = $this->connection->prepare($sql);
+            $stmt->bindvalue(':us_em', $Email_Phone, PDO::PARAM_STR);
+            $stmt->bindvalue(':us_ph', $Email_Phone, PDO::PARAM_STR);
+            $stmt->bindvalue(':us_ps', $Password, PDO::PARAM_STR);
+            $stmt->execute();
+        }catch(PDOException $e)
+        {
+            $res['status'] =0;
+            $res['report'] = $e->getMessage();
+        }
+        return $res;
+    }
     public function get_last_userID()
     {
         $res = array();
@@ -90,6 +108,56 @@ class DataBase {
             $stmt->bindvalue(':us_em', $Email, PDO::PARAM_STR);
             $stmt->bindvalue(':us_ph', $Phone, PDO::PARAM_STR);
             $stmt->bindvalue(':us_pc', $Picture, PDO::PARAM_STR);
+            $stmt->execute();
+            $res['result'] = $stmt->fetch();
+        } catch (PDOException $e) {
+            $res['status'] = 0;
+            $res['report'] = $e->getMessage();
+        }
+        return $res;
+    }
+    public function update_user_name($User_ID,$Full_Name){
+
+        $res = array();
+        $res['status'] = 1;
+        try {
+            $sql = "UPDATE users SET full_name=:us_fn WHERE id=:us_id";
+            $stmt = $this->connection->prepare($sql);
+            $stmt->bindvalue(':us_id', $User_ID, PDO::PARAM_INT);
+            $stmt->bindvalue(':us_fn', $Full_Name, PDO::PARAM_STR);
+            $stmt->execute();
+            $res['result'] = $stmt->fetch();
+        } catch (PDOException $e) {
+            $res['status'] = 0;
+            $res['report'] = $e->getMessage();
+        }
+        return $res;
+    }
+    public function update_user_password($User_ID,$Password){
+        $res = array();
+        $res['status'] = 1;
+        $Password = crypt($Password,14);
+        try {
+            $sql = "UPDATE users SET password=:us_fn WHERE id=:us_id";
+            $stmt = $this->connection->prepare($sql);
+            $stmt->bindvalue(':us_id', $User_ID, PDO::PARAM_INT);
+            $stmt->bindvalue(':us_fn', $Password, PDO::PARAM_STR);
+            $stmt->execute();
+            $res['result'] = $stmt->fetch();
+        } catch (PDOException $e) {
+            $res['status'] = 0;
+            $res['report'] = $e->getMessage();
+        }
+        return $res;
+    }
+    public function update_user_Phone($User_ID,$Password){
+        $res = array();
+        $res['status'] = 1;
+        try {
+            $sql = "UPDATE users SET phone=:us_fn WHERE id=:us_id";
+            $stmt = $this->connection->prepare($sql);
+            $stmt->bindvalue(':us_id', $User_ID, PDO::PARAM_INT);
+            $stmt->bindvalue(':us_fn', $Password, PDO::PARAM_STR);
             $stmt->execute();
             $res['result'] = $stmt->fetch();
         } catch (PDOException $e) {

@@ -25,6 +25,24 @@ if(isset($_POST['Email_Phone']) && isset($_POST['Password'])){
                 $ben['Task'] = '1';
             }
         }
+        if(isset($_POST['Task']) && $_POST['Task']== "Update_Full_Name"){
+            $ff = $MyDB->update_user_name($User_ID,$_POST['Full_Name']);
+            if($ff == 1) {
+                $ben['Task'] = '1';
+            }
+        }
+        if(isset($_POST['Task']) && $_POST['Task']== "Update_Password"){
+            $ff = $MyDB->update_user_password($User_ID,$_POST['Password']);
+            if($ff == 1) {
+                $ben['Task'] = '1';
+            }
+        }
+        if(isset($_POST['Task']) && $_POST['Task']== "Update_Phone"){
+            $ff = $MyDB->update_user_Phone($User_ID,$_POST['Phone']);
+            if($ff == 1) {
+                $ben['Task'] = '1';
+            }
+        }
         if(isset($_POST['Task1']) && $_POST['Task1']== "My_Disciples"){
             $Disciples = $MyDB->get_childrens($User_ID);
             $MyDB->delete_UserLog($User_ID);
@@ -125,6 +143,21 @@ if(isset($_POST['Email_Phone']) && isset($_POST['Password'])){
         }
 
         if(isset($_POST['Task']) && $_POST['Task']== "Authenticate"){
+
+            $Profiles = $MyDB->get_profile($_POST['Email_Phone'],$_POST['Password']);
+            if(isset($Profiles) && isset($Profiles['result'])){
+                $Profile = $Profiles['result'];
+                $found = array();
+                $found['Full_Name'] = $Profile['full_name'];
+                $found['Email'] = $Profile['email'];
+                $found['Phone'] = $Profile['phone'];
+                $found['Password'] = $_POST['Password'];
+                $found['Country'] = $Profile['phone'];
+                array_push($ben['User_Profile'],$found);
+
+            }
+        }
+        if(isset($_POST['Task']) && $_POST['Task']== "Delete_User"){
 
             $Profiles = $MyDB->get_profile($_POST['Email_Phone'],$_POST['Password']);
             if(isset($Profiles) && isset($Profiles['result'])){
