@@ -457,4 +457,19 @@ class DataBase {
         }
         return $res;
     }
+    public function delete_QuestionLog($User_ID){
+        $res = array();
+        $res['status'] = 1;
+        try{
+            $sql = "DELETE FROM question_log WHERE user_id=:c_id";
+            $stmt = $this->connection->prepare($sql);
+            $stmt->bindvalue(':c_id', $User_ID, PDO::PARAM_INT);
+            $stmt->execute();
+        }catch(PDOException $e)
+        {
+            $res['status'] =0;
+            $res['report'] = $e->getMessage();
+        }
+        return $res;
+    }
 }

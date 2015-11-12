@@ -109,6 +109,7 @@ if(isset($_POST['Email_Phone']) && isset($_POST['Password'])){
                 }
             }
         }elseif(isset($_POST['Task3']) && $_POST['Task3']== "My_Questions"){
+            $MyDB->delete_QuestionLog($User_ID);
             $Disciples = $MyDB->get_all_questions();
             if(isset($Disciples) && isset($Disciples['result'])){
                 foreach($Disciples['result'] as $Disciple){
