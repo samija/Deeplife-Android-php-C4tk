@@ -71,7 +71,7 @@ if(isset($_POST['Email_Phone']) && isset($_POST['Password'])){
                     $MyDB->add_new_Question_Log($User_ID,$Disciple['id']);
                 }
             }
-        }elseif(isset($_POST['Task1']) && $_POST['Task1']== "My_Questions"){
+            }elseif(isset($_POST['Task1']) && $_POST['Task1']== "My_Questions"){
             $Disciples = $MyDB->get_all_questions();
             if(isset($Disciples) && isset($Disciples['result'])){
                 foreach($Disciples['result'] as $Disciple){
@@ -134,6 +134,7 @@ if(isset($_POST['Email_Phone']) && isset($_POST['Password'])){
                 $found['Password'] = $_POST['Password'];
                 $found['Country'] = $Profile['phone'];
                 array_push($ben['User_Profile'],$found);
+
             }
         }
     }
