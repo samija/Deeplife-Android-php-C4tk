@@ -3,8 +3,9 @@
 require_once 'DataBase.php';
 $MyDB = new DataBase();
 //$res = $MyDB->add_new_user("ben","ben","ben@ben","091641","1","Male","Ethiopia","c:---","1");
+print_r($_POST['Email_Phone']);
 ?>
-<form method="POST" action="API.php">
+<form method="POST" action="">
     User ID<input type="text" name="Email_Phone" value="ben@ben"><br>
     User Pass<input type="text" name="Password" value="ben"><br>
     <input type="text" name="Task1" value="My_Questions"><br>
