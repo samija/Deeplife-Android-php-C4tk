@@ -1,5 +1,5 @@
 <?php
-require_once 'Bcrypt.php';
+include 'Bcrypt.php';
 require_once 'DataBase.php';
 $MyDB = new DataBase();
 //$res = $MyDB->add_new_user("ben","ben","ben@ben","091641","1","Male","Ethiopia","c:---","1");
