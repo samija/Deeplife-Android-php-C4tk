@@ -150,6 +150,22 @@ class DataBase {
         }
         return $res;
     }
+    public function update_user_email($User_ID,$Email){
+        $res = array();
+        $res['status'] = 1;
+        try {
+            $sql = "UPDATE users SET email=:us_fn WHERE id=:us_id";
+            $stmt = $this->connection->prepare($sql);
+            $stmt->bindvalue(':us_id', $User_ID, PDO::PARAM_INT);
+            $stmt->bindvalue(':us_fn', $Email, PDO::PARAM_STR);
+            $stmt->execute();
+            $res['result'] = $stmt->fetch();
+        } catch (PDOException $e) {
+            $res['status'] = 0;
+            $res['report'] = $e->getMessage();
+        }
+        return $res;
+    }
     public function update_user_Phone($User_ID,$Password){
         $res = array();
         $res['status'] = 1;

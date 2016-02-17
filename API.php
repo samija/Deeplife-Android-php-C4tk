@@ -31,8 +31,8 @@ if(isset($_POST['Email_Phone']) && isset($_POST['Password'])){
                 $ben['Task'] = '1';
             }
         }
-        if(isset($_POST['Task']) && $_POST['Task']== "Update_Password"){
-            $ff = $MyDB->update_user_password($User_ID,$_POST['Password']);
+        if(isset($_POST['Task']) && $_POST['Task']== "Update_Email"){
+            $ff = $MyDB->update_user_email($User_ID,$_POST['Email']);
             if($ff == 1) {
                 $ben['Task'] = '1';
             }
