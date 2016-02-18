@@ -28,8 +28,8 @@
       <file leaf-file-name="DataBase.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DataBase.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-23.0" vertical-offset="1758" max-vertical-offset="8385">
-              <caret line="159" column="45" selection-start-line="159" selection-start-column="45" selection-end-line="159" selection-end-column="45" />
+            <state vertical-scroll-proportion="-134.875" vertical-offset="1068" max-vertical-offset="8385">
+              <caret line="292" column="20" selection-start-line="292" selection-start-column="20" selection-end-line="292" selection-end-column="20" />
               <folding>
                 <element signature="e#6#95#0#PHP" expanded="false" />
                 <marker date="1455683118000" expanded="true" signature="719:888" placeholder="INSERT INTO ..." />
@@ -84,7 +84,7 @@
       <file leaf-file-name="Test.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Test.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.625" vertical-offset="0" max-vertical-offset="300">
+            <state vertical-scroll-proportion="0.0" vertical-offset="15" max-vertical-offset="300">
               <caret line="1" column="2" selection-start-line="1" selection-start-column="2" selection-end-line="1" selection-end-column="2" />
               <folding />
             </state>
@@ -144,8 +144,8 @@
       <file leaf-file-name="API.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/API.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.25993884" vertical-offset="255" max-vertical-offset="3165">
-              <caret line="34" column="65" selection-start-line="34" selection-start-column="65" selection-end-line="34" selection-end-column="65" />
+            <state vertical-scroll-proportion="0.96330273" vertical-offset="0" max-vertical-offset="3135">
+              <caret line="63" column="42" selection-start-line="63" selection-start-column="42" selection-end-line="63" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -981,7 +981,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Test.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.625" vertical-offset="0" max-vertical-offset="300">
+        <state vertical-scroll-proportion="0.0" vertical-offset="15" max-vertical-offset="300">
           <caret line="1" column="2" selection-start-line="1" selection-start-column="2" selection-end-line="1" selection-end-column="2" />
           <folding />
         </state>
@@ -989,8 +989,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/DataBase.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-23.0" vertical-offset="1758" max-vertical-offset="8385">
-          <caret line="159" column="45" selection-start-line="159" selection-start-column="45" selection-end-line="159" selection-end-column="45" />
+        <state vertical-scroll-proportion="-134.875" vertical-offset="1068" max-vertical-offset="8385">
+          <caret line="292" column="20" selection-start-line="292" selection-start-column="20" selection-end-line="292" selection-end-column="20" />
           <folding>
             <element signature="e#6#95#0#PHP" expanded="false" />
             <marker date="1455683118000" expanded="true" signature="719:888" placeholder="INSERT INTO ..." />
@@ -1033,8 +1033,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/API.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25993884" vertical-offset="255" max-vertical-offset="3165">
-          <caret line="34" column="65" selection-start-line="34" selection-start-column="65" selection-end-line="34" selection-end-column="65" />
+        <state vertical-scroll-proportion="0.96330273" vertical-offset="0" max-vertical-offset="3135">
+          <caret line="63" column="42" selection-start-line="63" selection-start-column="42" selection-end-line="63" selection-end-column="42" />
           <folding />
         </state>
       </provider>

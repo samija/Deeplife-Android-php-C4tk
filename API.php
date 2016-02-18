@@ -154,7 +154,6 @@ if(isset($_POST['Email_Phone']) && isset($_POST['Password'])){
                 $found['Password'] = $_POST['Password'];
                 $found['Country'] = $Profile['phone'];
                 array_push($ben['User_Profile'],$found);
-
             }
         }
         if(isset($_POST['Task']) && $_POST['Task']== "Delete_User"){
@@ -169,7 +168,6 @@ if(isset($_POST['Email_Phone']) && isset($_POST['Password'])){
                 $found['Password'] = $_POST['Password'];
                 $found['Country'] = $Profile['phone'];
                 array_push($ben['User_Profile'],$found);
-
             }
         }
     }
