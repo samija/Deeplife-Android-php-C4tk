@@ -6,6 +6,7 @@ fwrite($file,json_encode($_POST));
 fclose($file);
 $ben = array();
 $ben['Task'] = '';
+$ben['Error'] = '';
 $ben['Disciples'] = array();
 $ben['Schedules'] = array();
 $ben['User_Profile'] = array();
@@ -14,9 +15,9 @@ $ben['Questions'] = array();
 function error_logger($error)
 {
     $file = fopen("Error_Logger.txt","a");
-    fwrite($file,">>Client Request".'============================================>>');
-    fwrite($file,">>Client Request".json_encode($_POST));
-    fwrite($file,">>Client Address".json_encode($_SERVER['REMOTE_ADDR']));
+    fwrite($file,"\n".'--->'."\n");
+    fwrite($file,">>Client Address".json_encode($_SERVER['REMOTE_ADDR'])."\n");
+    fwrite($file,">>Client Request".json_encode($_POST['Task'])."\n");
     fwrite($file,json_encode($error));
     fclose($file);
 }
@@ -24,6 +25,7 @@ function error_logger($error)
 if(isset($_POST['Email_Phone']) && isset($_POST['Password'])) {
     try {
         $User = $MyDB->get_profile($_POST['Email_Phone'], $_POST['Password']);
+        error_logger("");
     } catch (Exception $e) {
         error_logger("---> " . date('Y-m-d H:i:s'));
         error_logger($e);
@@ -39,7 +41,11 @@ if(isset($_POST['Email_Phone']) && isset($_POST['Password'])) {
                 $MyDB->add_new_roll_linker($Last_ID, 2);
                 $MyDB->add_new_UserLog($User_ID, $MyDB->get_last_userID()['result'][0]);
                 if ($ff == 1) {
-                    $ben['Task'] = '1';
+                    $ben['Error'] = 'Adding new Disciple was Successful';
+                    $ben['Task'] = 1;
+                }else{
+                    $ben['Error'] = 'Sending Disciple Failed';
+                    $ben['Task'] = 0;
                 }
             } catch (Exception $e) {
                 error_logger("---> " . date('Y-m-d H:i:s'));
@@ -50,7 +56,11 @@ if(isset($_POST['Email_Phone']) && isset($_POST['Password'])) {
             try {
                 $ff = $MyDB->update_user_name($User_ID, $_POST['Full_Name']);
                 if ($ff == 1) {
-                    $ben['Task'] = '1';
+                    $ben['Error'] = 'Updating Full Name Successful';
+                    $ben['Task'] = 1;
+                }else{
+                    $ben['Error'] = 'Updating Full Name Failed';
+                    $ben['Task'] = 0;
                 }
             } catch (Exception $e) {
                 error_logger("---> " . date('Y-m-d H:i:s'));
@@ -62,7 +72,11 @@ if(isset($_POST['Email_Phone']) && isset($_POST['Password'])) {
             try {
                 $ff = $MyDB->update_user_email($User_ID, $_POST['Email']);
                 if ($ff == 1) {
-                    $ben['Task'] = '1';
+                    $ben['Error'] = 'Updating User Email was Successful';
+                    $ben['Task'] = 1;
+                }else{
+                    $ben['Error'] = 'Updating Email Failed';
+                    $ben['Task'] = 0;
                 }
             } catch (Exception $e) {
                 error_logger("---> " . date('Y-m-d H:i:s'));
@@ -74,7 +88,11 @@ if(isset($_POST['Email_Phone']) && isset($_POST['Password'])) {
             try {
                 $ff = $MyDB->update_user_Phone($User_ID, $_POST['Phone']);
                 if ($ff == 1) {
-                    $ben['Task'] = '1';
+                    $ben['Error'] = 'Updating User Phone Successful';
+                    $ben['Task'] = 1;
+                }else{
+                    $ben['Error'] = 'Updating User Phone Number Failed';
+                    $ben['Task'] = 0;
                 }
             } catch (Exception $e) {
                 error_logger("---> " . date('Y-m-d H:i:s'));
@@ -129,7 +147,11 @@ if(isset($_POST['Email_Phone']) && isset($_POST['Password'])) {
                 $res = $MyDB->add_new_schedule($User_ID, $_POST['Dis_Phone'], $_POST['Alarm_Time'], $_POST['Alarm_Repeat'], $_POST['Description'])['status'];
                 $MyDB->add_new_scheduleLog($User_ID, $MyDB->get_last_scheduleID()['result'][0]);
                 if ($res == 1) {
+                    $ben['Error'] = 'Adding new schedule was Successful';
                     $ben['Task'] = 1;
+                }else{
+                    $ben['Error'] = 'Adding new Schedule Failed';
+                    $ben['Task'] = 0;
                 }
             } catch (Exception $e) {
                 error_logger("---> " . date('Y-m-d H:i:s'));

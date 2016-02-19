@@ -16,8 +16,10 @@ class DataBase {
         $this->connection->query("USE seacccor_deeplifesys"); // datebase selection
     }
     public function my_Exceptions($expt){
-		
-
+        $file = fopen("DataBase_Error_Logger.txt","a");
+        fwrite($file,"\n".'---->>'."\n");
+        fwrite($file,json_encode($expt));
+        fclose($file);
     }
     public function add_new_user($Full_Name, $Password, $Email,$Phone,$Phase,$Gender,$Country,$Picture,$Mentor_ID){
         $res = array();
@@ -37,6 +39,7 @@ class DataBase {
             $stmt->bindvalue(':us_cn', $Country, PDO::PARAM_INT);
             $stmt->execute();
         } catch (PDOException $e) {
+            $res['Task'] = "add_new_user";
             $res['status'] = 0;
             $res['report'] = $e->getMessage();
             $this->my_Exceptions($res);
@@ -56,8 +59,10 @@ class DataBase {
             $stmt->execute();
             $res['result'] = $stmt->fetch();
         } catch (PDOException $e) {
+            $res['Task'] = "get_user";
             $res['status'] = 0;
             $res['report'] = $e->getMessage();
+            $this->my_Exceptions($res);
         }
         return $res;
     }
@@ -74,8 +79,10 @@ class DataBase {
             $stmt->execute();
         }catch(PDOException $e)
         {
+            $res['Task'] = "delete_user_of";
             $res['status'] =0;
             $res['report'] = $e->getMessage();
+            $this->my_Exceptions($res);
         }
         return $res;
     }
@@ -89,8 +96,10 @@ class DataBase {
             $stmt->execute();
             $res['result'] = $stmt->fetch();
         } catch (PDOException $e) {
+            $res['Task'] = "get_last_userID";
             $res['status'] = 0;
             $res['report'] = $e->getMessage();
+            $this->my_Exceptions($res);
         }
         return $res;
     }
@@ -111,8 +120,10 @@ class DataBase {
             $stmt->execute();
             $res['result'] = $stmt->fetch();
         } catch (PDOException $e) {
+            $res['Task'] = "update_user";
             $res['status'] = 0;
             $res['report'] = $e->getMessage();
+            $this->my_Exceptions($res);
         }
         return $res;
     }
@@ -128,8 +139,10 @@ class DataBase {
             $stmt->execute();
             $res['result'] = $stmt->fetch();
         } catch (PDOException $e) {
+            $res['Task'] = "update_user_name";
             $res['status'] = 0;
             $res['report'] = $e->getMessage();
+            $this->my_Exceptions($res);
         }
         return $res;
     }
@@ -145,8 +158,10 @@ class DataBase {
             $stmt->execute();
             $res['result'] = $stmt->fetch();
         } catch (PDOException $e) {
+            $res['Task'] = "update_user_password";
             $res['status'] = 0;
             $res['report'] = $e->getMessage();
+            $this->my_Exceptions($res);
         }
         return $res;
     }
@@ -161,8 +176,10 @@ class DataBase {
             $stmt->execute();
             $res['result'] = $stmt->fetch();
         } catch (PDOException $e) {
+            $res['Task'] = "update_user_email";
             $res['status'] = 0;
             $res['report'] = $e->getMessage();
+            $this->my_Exceptions($res);
         }
         return $res;
     }
@@ -177,8 +194,10 @@ class DataBase {
             $stmt->execute();
             $res['result'] = $stmt->fetch();
         } catch (PDOException $e) {
+            $res['Task'] = "update_user_phone";
             $res['status'] = 0;
             $res['report'] = $e->getMessage();
+            $this->my_Exceptions($res);
         }
         return $res;
     }
@@ -196,8 +215,10 @@ class DataBase {
             $stmt->execute();
             $res['result'] = $stmt->fetch();
         } catch (PDOException $e) {
+            $res['Task'] = "get_profile";
             $res['status'] = 0;
             $res['report'] = $e->getMessage();
+            $this->my_Exceptions($res);
         }
         return $res;
     }
@@ -214,9 +235,11 @@ class DataBase {
             $stmt->bindvalue(':us_ps', $Password, PDO::PARAM_STR);
             $stmt->execute();
             $res['result'] = $stmt->fetch();
-        } catch (PDOException $e) {
+        } catch (PDOException $e){
+            $res['Task'] = "get_profile_";
             $res['status'] = 0;
             $res['report'] = $e->getMessage();
+            $this->my_Exceptions($res);
         }
         return $res;
     }
@@ -233,8 +256,10 @@ class DataBase {
             $stmt->execute();
             $res['result'] = $stmt->fetch();
         } catch (PDOException $e) {
+            $res['Task'] = "get_user_";
             $res['status'] = 0;
             $res['report'] = $e->getMessage();
+            $this->my_Exceptions($res);
         }
         return $res;
     }
@@ -249,8 +274,10 @@ class DataBase {
             $stmt->execute();
         }catch(PDOException $e)
         {
+            $res['Task'] = "delete_user";
             $res['status'] =0;
             $res['report'] = $e->getMessage();
+            $this->my_Exceptions($res);
         }
         return $res;
     }
@@ -266,7 +293,8 @@ class DataBase {
                 $res['result'][] = $row;
 
             }
-        } catch (PDOException $e) {
+        } catch (PDOException $e){
+            $res['Task'] = "get_childrens";
             $res['status'] = 0;
             $res['report'] = $e->getMessage();
             $this->my_Exceptions($res);
@@ -284,6 +312,7 @@ class DataBase {
                 $res['result'][] = $row;
             }
         } catch (PDOException $e) {
+            $res['Task'] = "get_all_users";
             $res['status'] = 0;
             $res['report'] = $e->getMessage();
             $this->my_Exceptions($res);
@@ -302,6 +331,7 @@ class DataBase {
                 $res['result'][] = $row;
             }
         } catch (PDOException $e) {
+            $res['Task'] = "get_new_childrens";
             $res['status'] = 0;
             $res['report'] = $e->getMessage();
             $this->my_Exceptions($res);
@@ -321,6 +351,7 @@ class DataBase {
             $stmt->bindvalue(':us_ds', $Description, PDO::PARAM_STR);
             $stmt->execute();
         } catch (PDOException $e) {
+            $res['Task'] = "add_new_schedule";
             $res['status'] = 0;
             $res['report'] = $e->getMessage();
             $this->my_Exceptions($res);
@@ -339,6 +370,7 @@ class DataBase {
                 $res['result'][] = $row;
             }
         } catch (PDOException $e) {
+            $res['Task'] = "get_schedules(user_id)";
             $res['status'] = 0;
             $res['report'] = $e->getMessage();
             $this->my_Exceptions($res);
@@ -355,8 +387,10 @@ class DataBase {
             $stmt->execute();
             $res['result'] = $stmt->fetch();
         } catch (PDOException $e) {
+            $res['Task'] = "get_last_scheduleID";
             $res['status'] = 0;
             $res['report'] = $e->getMessage();
+            $this->my_Exceptions($res);
         }
         return $res;
     }
@@ -372,6 +406,7 @@ class DataBase {
                 $res['result'][] = $row;
             }
         } catch (PDOException $e) {
+            $res['Task'] = "get_New_Schedules";
             $res['status'] = 0;
             $res['report'] = $e->getMessage();
             $this->my_Exceptions($res);
@@ -388,8 +423,10 @@ class DataBase {
             $stmt->execute();
         }catch(PDOException $e)
         {
+            $res['Task'] = "delete_schedule(user_id)";
             $res['status'] =0;
             $res['report'] = $e->getMessage();
+            $this->my_Exceptions($res);
         }
         return $res;
     }
@@ -403,6 +440,7 @@ class DataBase {
             $stmt->bindvalue(':sc_id', $Schedule_ID, PDO::PARAM_INT);
             $stmt->execute();
         } catch (PDOException $e) {
+            $res['Task'] = "add_new_schedulelog";
             $res['status'] = 0;
             $res['report'] = $e->getMessage();
             $this->my_Exceptions($res);
@@ -419,8 +457,10 @@ class DataBase {
             $stmt->execute();
         }catch(PDOException $e)
         {
+            $res['Task'] = "delete_scheduleLog";
             $res['status'] =0;
             $res['report'] = $e->getMessage();
+            $this->my_Exceptions($res);
         }
         return $res;
     }
@@ -433,7 +473,8 @@ class DataBase {
             $stmt->bindvalue(':mt_id', $Mentor_ID, PDO::PARAM_INT);
             $stmt->bindvalue(':us_id', $User_ID, PDO::PARAM_INT);
             $stmt->execute();
-        } catch (PDOException $e) {
+        } catch (PDOException $e){
+            $res['Task'] = "add_new_UseLog";
             $res['status'] = 0;
             $res['report'] = $e->getMessage();
             $this->my_Exceptions($res);
@@ -450,8 +491,10 @@ class DataBase {
             $stmt->execute();
         }catch(PDOException $e)
         {
+            $res['Task'] = "delete_UserLog";
             $res['status'] =0;
             $res['report'] = $e->getMessage();
+            $this->my_Exceptions($res);
         }
         return $res;
     }
@@ -465,6 +508,7 @@ class DataBase {
             $stmt->bindvalue(':sc_id', $Roll_Num, PDO::PARAM_INT);
             $stmt->execute();
         } catch (PDOException $e) {
+            $res['Task'] = "add_new_roll_linker";
             $res['status'] = 0;
             $res['report'] = $e->getMessage();
             $this->my_Exceptions($res);
@@ -482,7 +526,8 @@ class DataBase {
             $stmt->bindvalue(':qs_nt', $Note, PDO::PARAM_STR);
             $stmt->bindvalue(':qs_mn', $Mandatory, PDO::PARAM_STR);
             $stmt->execute();
-        } catch (PDOException $e) {
+        } catch (PDOException $e){
+            $res['Task'] = "add_new_question";
             $res['status'] = 0;
             $res['report'] = $e->getMessage();
             $this->my_Exceptions($res);
@@ -500,6 +545,7 @@ class DataBase {
                 $res['result'][] = $row;
             }
         } catch (PDOException $e) {
+            $res['Task'] = "get_all_questions";
             $res['status'] = 0;
             $res['report'] = $e->getMessage();
             $this->my_Exceptions($res);
@@ -519,6 +565,7 @@ class DataBase {
 
             }
         } catch (PDOException $e) {
+            $res['Task'] = "get_new_question_for(user_id)";
             $res['status'] = 0;
             $res['report'] = $e->getMessage();
             $this->my_Exceptions($res);
@@ -535,6 +582,7 @@ class DataBase {
             $stmt->bindvalue(':qs_id', $Question_ID, PDO::PARAM_INT);
             $stmt->execute();
         } catch (PDOException $e) {
+            $res['Task'] = "add_new_question_log";
             $res['status'] = 0;
             $res['report'] = $e->getMessage();
             $this->my_Exceptions($res);
@@ -551,8 +599,10 @@ class DataBase {
             $stmt->execute();
         }catch(PDOException $e)
         {
+            $res['Task'] = "delete_questionLog";
             $res['status'] =0;
             $res['report'] = $e->getMessage();
+            $this->my_Exceptions($res);
         }
         return $res;
     }
