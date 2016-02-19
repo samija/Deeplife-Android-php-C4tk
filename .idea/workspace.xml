@@ -28,8 +28,8 @@
       <file leaf-file-name="DataBase.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DataBase.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1068" max-vertical-offset="8385">
-              <caret line="292" column="20" selection-start-line="292" selection-start-column="20" selection-end-line="292" selection-end-column="20" />
+            <state vertical-scroll-proportion="-24.25" vertical-offset="6963" max-vertical-offset="8385">
+              <caret line="508" column="33" selection-start-line="508" selection-start-column="20" selection-end-line="508" selection-end-column="41" />
               <folding>
                 <element signature="e#6#95#0#PHP" expanded="false" />
                 <marker date="1455683118000" expanded="true" signature="719:888" placeholder="INSERT INTO ..." />
@@ -144,8 +144,8 @@
       <file leaf-file-name="API.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/API.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.16025642" vertical-offset="150" max-vertical-offset="4335">
-              <caret line="20" column="18" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
+            <state vertical-scroll-proportion="0.32110092" vertical-offset="2415" max-vertical-offset="4335">
+              <caret line="182" column="41" selection-start-line="182" selection-start-column="41" selection-end-line="182" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -171,10 +171,8 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="66" />
-    <option name="y" value="27" />
-    <option name="width" value="1865" />
-    <option name="height" value="1057" />
+    <option name="width" value="1920" />
+    <option name="height" value="1080" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -224,7 +222,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="FullScreen" value="false" />
+    <property name="FullScreen" value="true" />
     <property name="options.lastSelected" value="preferences.externalTools" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
@@ -279,7 +277,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="66" y="27" width="1865" height="1057" extended-state="0" />
+    <frame x="0" y="0" width="1920" height="1080" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -993,8 +991,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/DataBase.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1068" max-vertical-offset="8385">
-          <caret line="292" column="20" selection-start-line="292" selection-start-column="20" selection-end-line="292" selection-end-column="20" />
+        <state vertical-scroll-proportion="-24.25" vertical-offset="6963" max-vertical-offset="8385">
+          <caret line="508" column="33" selection-start-line="508" selection-start-column="20" selection-end-line="508" selection-end-column="41" />
           <folding>
             <element signature="e#6#95#0#PHP" expanded="false" />
             <marker date="1455683118000" expanded="true" signature="719:888" placeholder="INSERT INTO ..." />
@@ -1037,8 +1035,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/API.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.16025642" vertical-offset="150" max-vertical-offset="4335">
-          <caret line="20" column="18" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
+        <state vertical-scroll-proportion="0.32110092" vertical-offset="2415" max-vertical-offset="4335">
+          <caret line="182" column="41" selection-start-line="182" selection-start-column="41" selection-end-line="182" selection-end-column="41" />
           <folding />
         </state>
       </provider>

@@ -177,7 +177,7 @@ if(isset($_POST['Email_Phone']) && isset($_POST['Password'])) {
         }
         if (isset($_POST['Task3']) && $_POST['Task3'] == "Get_Questions") {
             try {
-                $Disciples = $MyDB->get_questions_for($User_ID);
+                $Disciples = $MyDB->get_new_questions_for($User_ID);
                 if (isset($Disciples) && isset($Disciples['result'])) {
                     foreach ($Disciples['result'] as $Disciple) {
                         $found = array();
