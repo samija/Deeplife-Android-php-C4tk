@@ -273,6 +273,19 @@ if(isset($_POST['Email_Phone']) && isset($_POST['Password'])) {
                 error_logger($e);
             }
         }
+        if (isset($_POST['Task']) && $_POST['Task'] == "Send_Report") {
+            try {
+                $file = fopen("Report_Data.txt","a");
+                fwrite($file,"\n".'--->'.date('Y-m-d H:i:s')."\n");
+                fwrite($file,">>Client Address".json_encode($_SERVER['REMOTE_ADDR'])."\n");
+                fwrite($file,">>Data".json_encode($_POST)."\n");
+                fclose($file);
+                $ben['Task'] = 1;
+            } catch (Exception $e) {
+                error_logger("---> " . date('Y-m-d H:i:s'));
+                error_logger($e);
+            }
+        }
     }
 }
 if (isset($_POST['Task']) && $_POST['Task'] == "Register") {
